@@ -1,7 +1,6 @@
 resource "random_pet" "name" {
-  count = 2
+  count = var.pets
   }
 
 resource "random_pet" "pet2" {
-  count = 2
   }
