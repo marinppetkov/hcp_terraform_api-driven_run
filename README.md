@@ -10,6 +10,7 @@ options:
   -h, --help                                   show this help message and exit
   -o ORGANIZATION, --organization ORGANIZATION Specify your organization name
   -w WORKSPACE,    --workspace WORKSPACE       Specify your HCP Terraform API-driven workspace
+  -d DIRECTORY,    --directory DIRECTORY       Specify the location of your Terraform configuration files
 ```
 Environment variable
 - **TOKEN** - HCP Terraform [API token](https://developer.hashicorp.com/terraform/cloud-docs/users-teams-organizations/api-tokens)
