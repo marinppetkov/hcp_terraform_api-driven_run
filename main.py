@@ -16,7 +16,7 @@ args = parser.parse_args()
 # workspace = "api-driven-python"
 organzation = args.organization
 workspace = args.workspace
-TerraformConfig =args.TerraformConfig
+TerraformConfig = args.directory
 CONFIG_ARCHIVE_NAME = "configuration.tar.gz"
 ### Get API token
 
