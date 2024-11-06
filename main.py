@@ -22,26 +22,26 @@ CONFIG_ARCHIVE_NAME = "configuration.tar.gz"
 
 def getToken():
     try:
-        TOKEN=os.environ["TOKEN"]
+        token=os.environ["TOKEN"]
         print("Using exsting token")
     except KeyError:
         print("Token not set")
         print("Checking terraform credentials file")
         try:
             token_file = open(f"{os.path.expanduser("~")}/.terraform.d/credentials.tfrc.json", "r")
-            TOKEN= json.load(token_file)["credentials"]["app.terraform.io"]["token"]
+            token= json.load(token_file)["credentials"]["app.terraform.io"]["token"]
             token_file.close()
         except FileNotFoundError:
-            TOKEN = input("File not found please provide valid token=")
+            token = input("File not found please provide valid HCP Terraform API token=")
         else:
             print("Using token from local terraform credential file")
-            return TOKEN
+            return token
     except:
         print("some other error")
         return -1
     else: 
         print("Env variable TOKEN will be used")
-        return TOKEN
+        return token
 
 ### Creating archive with Terraform configuration files located in sub dir TerraformConfig
 
@@ -76,9 +76,9 @@ def configFileSelect():
 # Upload the configuration version
 # https://developer.hashicorp.com/terraform/cloud-docs/api-docs/run
 
-def configVersionCreate(TOKEN, organzation, workspace):
+def configVersionCreate(token, organzation, workspace):
     # Get the workspace ID
-    HCP_headers = {"Authorization": f"Bearer {TOKEN}", "Content-Type": "application/vnd.api+json"}
+    HCP_headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/vnd.api+json"}
     URL_get_ws = f"https://app.terraform.io/api/v2/organizations/{organzation}/workspaces/{workspace}"
     result = requests.get(headers=HCP_headers, url=URL_get_ws)
     result.raise_for_status()
