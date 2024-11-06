@@ -87,7 +87,7 @@ def configVersionCreate(token, organzation, workspace):
     # Create a Configuration Version
     URL_cv_url = f"https://app.terraform.io/api/v2/workspaces/{workspace_id}/configuration-versions"
     os.chdir(os.path.dirname(__file__))
-    payload_file = open("create_cv.json", "r")
+    payload_file = open("payload.json", "r")
     payload = json.load(payload_file)
     payload_file.close()
     create_cv = requests.post(headers=HCP_headers, json=payload, url=URL_cv_url)

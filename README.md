@@ -1,5 +1,8 @@
 # Automate HCP Terraform API-driven Run Workflow
-This repository contains a Python script to automate and manage HCP Terraform runs using the [Terraform API](https://developer.hashicorp.com/terraform/cloud-docs/api-docs/run).
+This repository contains a Python script to automate and manage HCP Terraform runs</br> 
+It follows the logic described in [Terraform API documentation](https://developer.hashicorp.com/terraform/cloud-docs/api-docs/run) 
+and uses the payload from `payload.json` file to create a [**Configuration Version**](https://developer.hashicorp.com/terraform/cloud-docs/api-docs/configuration-versions#create-a-configuration-version)
+
 ## Usage
 ```bash
 usage: HCP Terraform API driven workflow [-h] [-o ORGANIZATION] [-w WORKSPACE]
