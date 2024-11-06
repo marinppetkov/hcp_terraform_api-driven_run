@@ -68,14 +68,9 @@ def configFileSelect():
         configFileCreate()
     except FileExistsError:
         print("The configuration file already exists.")
-        print("If you like to create new configuration, type yes, otherwise the existing will be used.\n")
-        useFile = input("Your response: ")
-        if useFile.lower() == "yes":
-            print("remove the file")
-            configFileDelete()
-            configFileCreate()
-        else:
-            print("Using the existing configuration.")
+        print("Removing the file")
+        configFileDelete()
+        configFileCreate()
 
 
 # Upload the configuration version
