@@ -2,7 +2,7 @@ import requests
 import os, json
 import tarfile
 import argparse
-from variables import organzation,workspace
+from variables import organzation,workspace, TerraformConfig
 
 parser = argparse.ArgumentParser(
     prog        ='HCP Terraform API driven workflow',
@@ -10,11 +10,13 @@ parser = argparse.ArgumentParser(
 )
 parser.add_argument('-o', '--organization', default=organzation, help="Specify your organization name")
 parser.add_argument('-w', '--workspace', default=workspace, help="Specify your HCP Terraform API-driven workspace" )
+parser.add_argument('-d', '--directory', default=TerraformConfig, help="Specify the location of your Terraform configuration files" )
 args = parser.parse_args()
 # organzation = "marin-tests"
 # workspace = "api-driven-python"
 organzation = args.organization
 workspace = args.workspace
+TerraformConfig =args.TerraformConfig
 CONFIG_ARCHIVE_NAME = "configuration.tar.gz"
 ### Get API token
 
@@ -47,7 +49,7 @@ def configFileCreate():
     if os.getcwd != os.path.dirname(__file__):
         os.chdir(os.path.dirname(__file__))
     ConfigurationFiles = tarfile.open(name=CONFIG_ARCHIVE_NAME,mode="x:gz")
-    os.chdir(f"{os.path.dirname(__file__)}/TerraformConfig") #Need to change current dir as its going to add the whole TerraformConfig dir to the archive
+    os.chdir(f"{os.path.dirname(__file__)}/{TerraformConfig}") #Need to change current dir as its going to add the whole TerraformConfig dir to the archive
     # Walk through all files in sub dir and adding the terraform configuration only
     # Not going to work in case there are local terraform modules 
     for file in os.listdir():

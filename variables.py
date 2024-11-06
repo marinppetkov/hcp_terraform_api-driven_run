@@ -1,2 +1,3 @@
 organzation = "<your org>"
-workspace = "your workspace"
+workspace = "<your workspace>"
+TerraformConfig = "TerraformConfig"
