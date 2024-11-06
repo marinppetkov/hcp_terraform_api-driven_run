@@ -99,6 +99,7 @@ def configVersionCreate(TOKEN, organzation, workspace):
     configuration_binary = configuration_file.read()
     configuration_file.close()
     requests.put(headers={"Content-Type": "application/octet-stream"}, data=configuration_binary, url=filesUploadURL)
+
 if __name__ == "__main__":
     configFileSelect() #This function can be replaced with configFileCreate() if this file is deleted after each call.
     configVersionCreate(getToken(), organzation, workspace)
