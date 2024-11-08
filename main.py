@@ -53,7 +53,7 @@ def configFileCreate():
     # Walk through all files in sub dir and adding the terraform configuration only
     # Not going to work in case there are local terraform modules 
     for file in os.listdir():
-        if file.split(".")[-1] in ("tf", "tfvars"):
+        if file.split(".")[-1] in ("tf", "tfvars", "sh", "pub", "tpl", "tftpl", "html", "hcl"):
             ConfigurationFiles.add(file)
     ConfigurationFiles.close()
 
